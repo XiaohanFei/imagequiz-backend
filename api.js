@@ -22,6 +22,9 @@ let getCustomers = () => {
     return db.getCustomers();
 }
 
+let getQuizzes=()=>{
+    return db.getQuizzes();
+}
 let addQuestion = (picture, choices, answer) => {
     return db.addQuestion(picture, choices, answer);
 }
@@ -103,6 +106,7 @@ exports.get_scores=get_scores;
 
 
 // DB 
+exports.getQuizzes=getQuizzes
 exports.getCustomers=getCustomers;
 exports.addCustomer = addCustomer;
 exports.customerLogin=customerLogin;

@@ -1,4 +1,4 @@
-const { Pool, Connection } = require('pg');
+const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
 require("dotenv").config();
 
