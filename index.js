@@ -9,7 +9,7 @@ const port =process.env.PORT || 4002;
 
 application.use(express.json());
 application.use(cors(
-    
+
 ));
 
 application.get('/add/:n/:m',(request,response)=>{
@@ -98,6 +98,7 @@ application.post('/register', (request, response) => {
     let name = request.body.name;
     let email = request.body.email;
     let password = request.body.password;
+    password=password+""
     api.addCustomer(name, email, password)
     .then(x => response.json({message: 'The customer added.'}))
     .catch(e => {
