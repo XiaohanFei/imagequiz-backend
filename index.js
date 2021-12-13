@@ -1,11 +1,18 @@
 const express =require('express');
 const api=require('./api');
+const cors = require('cors');
 const { scores } = require('./data_tier/scores');
 const application=express();
 const port =process.env.PORT || 4002;
-const {customer}=
+
+
 
 application.use(express.json());
+application.use(cors({
+   origin: "https://xiaohanfei.github.io", // allow to server to accept request from different origin
+   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+   credentials: true, // allow session cookie from browser to pass through
+}));
 
 application.get('/add/:n/:m',(request,response)=>{
     let n =Number(request.params.n);
