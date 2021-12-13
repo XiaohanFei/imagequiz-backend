@@ -138,7 +138,6 @@ application.post('/quiz', (request, response) => {
 });
 
 application.get('/quizzes', (request, response) => {
-    console.log('in /quizzes');
     api.getQuizzes()
     .then(x => {
         response.json(x);
