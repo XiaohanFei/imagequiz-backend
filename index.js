@@ -110,12 +110,16 @@ application.post('/register', (request, response) => {
 application.post('/login', (request, response) => {
     let email = request.body.email;
     let password = request.body.password;
-    let isValid = api.customerLogin(email, password);
-    if(isValid) {
-        response.json({message: 'Login successful'});
-    } else {
-        response.status(404).json({message: 'Login not successful'});
+    password=password+""
+    api.customerLogin(email, password)
+    .then(x=>{
+        if(x) {
+            response.json({message: 'Login successful'});
+        } else {
+            response.status(404).json({message: 'Login not successful'});
+        }
     }
+    ) 
 });
 
 application.get('/flowers', (request, response) => {
