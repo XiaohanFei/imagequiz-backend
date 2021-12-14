@@ -114,9 +114,9 @@ application.post('/login', (request, response) => {
     api.customerLogin(email, password)
     .then(x=>{
         if(x) {
-            response.json({message: 'Login successful', done:true});
+            response.json({message: 'Login successful', isVaild:true});
         } else {
-            response.status(404).json({message: 'Login not successful',done:false});
+            response.status(404).json({message: 'Login not successful',isVaild:false});
         }
     }
     ) 
