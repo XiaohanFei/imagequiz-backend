@@ -1,11 +1,6 @@
-create schema if not exists imagequiz;
+drop schema imagequiz cascade;
+create schema if not exists imagequiz ;
 
-drop table if exists imagequiz.customer cascade;
-drop table if exists imagequiz.question cascade;
-drop table if exists imagequiz.category cascade;
-drop table if exists imagequiz.quiz cascade;
-drop table if exists imagequiz.question cascade;
-drop table if exists imagequiz.flower;
 
 create table imagequiz.customer 
 (
@@ -47,4 +42,15 @@ create table imagequiz.flower
     id bigserial primary key,
     name text not null,
     picture text not null
+);
+
+ 
+
+create table imagequiz.score
+(
+    id bigserial primary key,
+    customer_id int not null REFERENCES imagequiz.customer(id),
+    quiz_id int not null REFERENCES imagequiz.quiz(id),
+    score text not null,
+    date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );

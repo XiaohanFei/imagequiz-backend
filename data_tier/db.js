@@ -64,10 +64,10 @@ let getFlowers = () => {
     .then(x => x.rows);
 }
 
-let addScore = (quizTaker, quizId, score) => {
+let addScore = (quizTaker, name, score) => {
     return pool.query(`insert into imagequiz.score(customer_id, quiz_id, score) values ((select id from imagequiz.customer where email = $1), 
     (select id from imagequiz.quiz where name = $2),
-    $3)`,[quizTaker, quizName, score]);
+    $3)`,[quizTaker, name, score]);
 }
 
 let checkScore = (quizTaker, quizId) => {

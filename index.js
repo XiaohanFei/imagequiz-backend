@@ -164,12 +164,14 @@ application.get('/quiz/:name', (request, response) => {
 
 application.post('/score', (request, response) => {
     let quizTaker = request.body.quizTaker;
-    let quizId = request.body.quizId;
+    let quizName = request.body.quizName;
     let score = request.body.score;
-    api.addScore(quizTaker, quizId, score)
+    api.addScore(quizTaker, quizName, score)
     .then(x => response.json({message: 'Score has been updated.'}))
-    .catch((e) => response.status(500).json({message: 'ERROR'}));
-    });
+    .catch((e) => {console.log(e)
+        response.status(500).json({message: 'ERROR'})
+    })
+})
 
 application.get('/scores/:quiztaker/:quizid', (request, response) => {
     let quizTaker = request.params.quiztaker;
